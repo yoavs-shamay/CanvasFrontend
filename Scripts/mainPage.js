@@ -34,7 +34,7 @@ function canvasScroll(e)
         if (scale < 5)
         {
             scale += 1;
-            $("#canvas")[0].getContext("2d").scale(scale, scale);
+            $("#canvas").css("transform", "scale(" + scale + ")");
             loadCanvas();
         }
     }
@@ -43,7 +43,7 @@ function canvasScroll(e)
         if (scale > 1)
         {
             scale -= 1;
-            $("#canvas")[0].getContext("2d").scale(scale, scale);
+            $("#canvas").css("transform", "scale(" + scale + ")");
             loadCanvas();
         }
     }
