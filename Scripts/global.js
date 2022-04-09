@@ -8,7 +8,10 @@ function backendHttpRequest(path, params, callback)
         data: params,
         dataType: "json",
         async: true,
-        complete: callback
+        complete: function (event, xhr, settings)
+        {
+            callback(this.message);
+        }
     });
 }
 
