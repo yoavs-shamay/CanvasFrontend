@@ -10,6 +10,7 @@ function backendHttpRequest(path, params, callback)
         async: true,
         complete: function (event, xhr, settings)
         {
+            alert(xhr.responseText);
             callback(xhr.responseText);
         }
     });
