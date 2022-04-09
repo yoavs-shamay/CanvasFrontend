@@ -22,11 +22,6 @@ function reduceRemainingTime()
         var seconds = Math.floor((remainingTime - minutes) * 60);
         $("#timer").text(minutes + ":" + seconds);
     }
-    else
-    {
-        $("#timer").hide();
-        $("#change-color-button").show();
-    }
 }
 
 var scale = 1;
