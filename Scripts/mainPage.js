@@ -85,12 +85,12 @@ function logout()
         });
     });
 }
-
+var x,y;
 function canvasClick(e)
 {
     $("#pixel-info").show();
-    var x = e.offsetX;
-    var y = e.offsetY;
+    x = e.offsetX;
+    y = e.offsetY;
     var pixel = canvasObject.Pixels[x][y];
     var color = "rgb(" + pixel.Red + "," + pixel.Green + "," + pixel.Blue + ")";
     $("#pixel-color").val(color);
