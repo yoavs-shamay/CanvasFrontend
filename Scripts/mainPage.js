@@ -132,14 +132,14 @@ function changeColor()
 function saveColor()
 {
     var color = $("#pixel-color").val();
-    var colorRGB = color.match(/\d+/g);
+    var colorRGB = hexToRgb(color);
     var params = {
         "sessionId": localStorage.getItem("sessionId"),
         "x": x,
         "y": y,
-        "red": colorRGB[1],
-        "green": colorRGB[2],
-        "blue": colorRGB[3]
+        "red": colorRGB[0],
+        "green": colorRGB[1],
+        "blue": colorRGB[2]
     };
     $("#pixel-color").prop("disabled", true);
     remainingTime = 5;
@@ -150,4 +150,14 @@ function saveColor()
     backendHttpRequest("ChangePixel", params, function() {
         loadCanvas();
     });
+}
+
+function hexToRgb(color)
+{
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(color);
+    return result ? [
+        parseInt(result[1], 16),
+        parseInt(result[2], 16),
+        parseInt(result[3], 16)
+    ] : null;
 }
