@@ -8,9 +8,8 @@ function backendHttpRequest(path, params, callback)
         data: params,
         dataType: "json",
         async: true,
-        complete: function (event, xhr, settings)
+        complete: function (xhr, status) {
         {
-            alert(xhr.responseText);
             callback(xhr.responseText);
         }
     });
