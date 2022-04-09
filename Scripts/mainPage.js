@@ -74,7 +74,7 @@ function loadCanvas()
             for (var j = 0; j < pixels[i].length; j++)
             {
                 var pixel = pixels[i][j];
-                var color = "rgb(" + pixel.Red + "," + pixel.Green + "," + pixel.Blue + ")";
+                var color = "#" + ("000000" + rgbToHex(pixel.Red, pixel.Green, pixel.Blue)).slice(-6);
                 ctx.fillStyle = color;
                 ctx.fillRect(pixel.X, pixel.Y, 1, 1);
             }
