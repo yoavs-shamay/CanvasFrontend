@@ -113,6 +113,7 @@ function canvasClick(e)
         $("#timer").hide();
         $("#change-color-button").show();
     }
+    $("#save-button").hide();
 }
 
 function changeColor()
