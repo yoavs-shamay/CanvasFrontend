@@ -95,6 +95,14 @@ function canvasClick(e)
     var color = "rgb(" + pixel.Red + "," + pixel.Green + "," + pixel.Blue + ")";
     $("#pixel-color").val(color);
     $("#pixel-color").prop("disabled", true);
+    if (remainingTime > 0)
+    {
+        $("#timer").show();
+    }
+    else
+    {
+        $("#change-color-button").show();
+    }
 }
 
 function changeColor()
