@@ -100,7 +100,7 @@ function canvasClick(e)
     x = e.offsetX;
     y = e.offsetY;
     var pixel = canvasObject.Pixels[x][y];
-    var color = "rgb(" + pixel.Red + "," + pixel.Green + "," + pixel.Blue + ")";
+    var color = "#" + ("000000" + rgbToHex(pixel.Red, pixel.Green, pixel.Blue)).slice(-6);
     $("#pixel-color").val(color);
     $("#pixel-color").prop("disabled", true);
     if (remainingTime > 0)
@@ -114,6 +114,12 @@ function canvasClick(e)
         $("#change-color-button").show();
     }
     $("#save-button").hide();
+}
+
+function rgbToHex(red, green, blue)
+{
+    var rgb = blue | (green << 8) | (red << 16);
+    return rgb.toString(16);
 }
 
 function changeColor()
