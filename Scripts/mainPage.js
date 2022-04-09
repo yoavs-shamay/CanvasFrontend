@@ -22,6 +22,14 @@ function reduceRemainingTime()
         var seconds = Math.floor((remainingTime - minutes) * 60);
         $("#timer").text(minutes + ":" + seconds);
     }
+    else
+    {
+        $("#timer").hide();
+        if (!$("#save-button").is(":visible"))
+        {
+            $("#change-color-button").show();
+        }
+    }
 }
 
 var scale = 1;
@@ -98,9 +106,11 @@ function canvasClick(e)
     if (remainingTime > 0)
     {
         $("#timer").show();
+        $("#change-color-button").hide();
     }
     else
     {
+        $("#timer").hide();
         $("#change-color-button").show();
     }
 }
