@@ -8,7 +8,7 @@ function backendHttpRequest(path, params, callback)
         data: params,
         dataType: "json",
         async: true,
-        success: callback
+        complete: callback
     });
 }
 
