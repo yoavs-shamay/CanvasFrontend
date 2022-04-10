@@ -242,18 +242,18 @@ function canvasMouseMove(event)
     }
 }
 
-var prevWidth = $(window).width();
-var prevHeight = $(window).height();
+var normalWidth = $(window).width();
+var normalHeight = $(window).height();
 window.onresize = function(e)
 {
     var curWidth = $(window).width();
     var curHeight = $(window).height();
-    if (curWidth != prevWidth || curHeight != prevHeight)
+    if (curWidth != normalWidth || curHeight != normalHeight)
     {
-        var madeBigger = curWidth > prevWidth || curHeight > prevHeight;
+        var madeBigger = curWidth > normalWidth || curHeight > normalHeight;
         prevWidth = curWidth;
         prevHeight = curHeight;
         resizeCanvas(madeBigger);
+        window.resizeTo(normalWidth, normalHeight);
     }
-    e.preventDefault();
 }
