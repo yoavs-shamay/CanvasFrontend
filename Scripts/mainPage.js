@@ -48,17 +48,23 @@ function updateTimerAndButton()
 var scale = 1;
 $(document).on("mousewheel DOMMouseScroll", function(e) {
     var delta = e.originalEvent.wheelDelta || -e.originalEvent.detail;
+    var scaleChanged = false;
     if (delta < 0 && scale < 5)
     {
         scale += 1;
+        scaleChanged = true;
     }
     else if (delta > 0 && scale > 1)
     {
         scale -= 1;
+        scaleChanged = true;
     }
-    $("#canvas").attr("width", canvasObject.Width * scale);
-    $("#canvas").attr("height", canvasObject.Height * scale);
-    loadCanvas();
+    if (scaleChanged)
+    {
+        $("#canvas").attr("width", canvasObject.Width * scale);
+        $("#canvas").attr("height", canvasObject.Height * scale);
+        loadCanvas();
+    }
 });
 
 var canvasObject;
