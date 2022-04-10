@@ -258,4 +258,4 @@ $(document).on("touchmove", function(event) {
     var isBigger = $(window).width() > normalWidth || $(window).height() > normalHeight;
     resizeCanvas(isBigger);
     event.preventDefault();
-}
+});
