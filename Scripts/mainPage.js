@@ -8,7 +8,7 @@ $(function() {
     }
     loadCanvas();
     setInterval(loadCanvas, 1000);
-    backendHttpRequest("GetRemainingTime", { "sessionId": sessionId }, function(serverRemainingTime) {
+    backendHttpRequest("GetRemainingTime", { "sessionId": sessionId }, function(serverRemainingTime, status) {
         alert("Remaining time: " + serverRemainingTime);
         remainingTime = parseFloat(serverRemainingTime);
         setInterval(reduceRemainingTime, 1000);
@@ -71,7 +71,7 @@ $(document).on("mousewheel DOMMouseScroll", function(e) {
 var canvasObject;
 function loadCanvas()
 {
-    backendHttpRequest("GetCanvas", {}, function(canvas) {
+    backendHttpRequest("GetCanvas", {}, function(canvas, status) {
         canvasObject = JSON.parse(canvas);
         var width = canvasObject.Width;
         var height = canvasObject.Height;
