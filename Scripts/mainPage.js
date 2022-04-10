@@ -7,13 +7,12 @@ $(function() {
         return;
     }
     loadCanvas();
-    setInterval(loadCanvas, 1000);
     backendHttpRequest("GetRemainingTime", { "sessionId": sessionId }, function(serverRemainingTime, status) {
-        alert("Remaining time: " + serverRemainingTime);
         remainingTime = parseFloat(serverRemainingTime);
         setInterval(reduceRemainingTime, 1000);
+        updateTimerAndButton();
     });
-    updateTimerAndButton();
+    setInterval(loadCanvas, 1000);
 });
 
 function reduceRemainingTime()
