@@ -102,7 +102,7 @@ function canvasClick(e)
     $("#pixel-info").show();
     x = e.offsetX;
     y = e.offsetY;
-    var pixel = canvasObject.Pixels[x / scale][y / scale];
+    var pixel = canvasObject.Pixels[Math.floor(x / scale)][Math.floor(x / scale)];
     var color = "#" + ("000000" + rgbToHex(pixel.Red, pixel.Green, pixel.Blue)).slice(-6);
     $("#pixel-color").val(color);
     $("#pixel-color").prop("disabled", true);
