@@ -49,12 +49,12 @@ var scale = 1;
 $(document).on("mousewheel DOMMouseScroll", function(e) {
     var delta = e.originalEvent.wheelDelta || -e.originalEvent.detail;
     var scaleChanged = false;
-    if (delta < 0 && scale < 50)
+    if (delta > 0 && scale < 50)
     {
         scale += 1;
         scaleChanged = true;
     }
-    else if (delta > 0 && scale > 1)
+    else if (delta < 0 && scale > 1)
     {
         scale -= 1;
         scaleChanged = true;
