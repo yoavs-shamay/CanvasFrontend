@@ -244,17 +244,18 @@ function canvasMouseMove(event)
 
 var normalWidth = $(window).width();
 var normalHeight = $(window).height();
-window.onresize = function(e)
-{
-    alert("resize!");
-    var curWidth = $(window).width();
-    var curHeight = $(window).height();
-    if (curWidth != normalWidth || curHeight != normalHeight)
+//detect window zoom and prevent default
+$(window).resize(function(event) {
+    if ($(window).width() != normalWidth || $(window).height() != normalHeight)
     {
-        var madeBigger = curWidth > normalWidth || curHeight > normalHeight;
-        prevWidth = curWidth;
-        prevHeight = curHeight;
-        resizeCanvas(madeBigger);
-        window.resizeTo(normalWidth, normalHeight);
+        event.preventDefault();
     }
+    var isBigger = $(window).width() > normalWidth || $(window).height() > normalHeight;
+    resizeCanvas(isBigger);
+});
+//detect zoom on mobile
+$(document).on("touchmove", function(event) {
+    var isBigger = $(window).width() > normalWidth || $(window).height() > normalHeight;
+    resizeCanvas(isBigger);
+    event.preventDefault();
 }
