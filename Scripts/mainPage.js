@@ -49,7 +49,7 @@ var scale = 1;
 $(document).on("mousewheel DOMMouseScroll", function(e) {
     var delta = e.originalEvent.wheelDelta || -e.originalEvent.detail;
     var scaleChanged = false;
-    if (delta < 0 && scale < 5)
+    if (delta < 0 && scale < 50)
     {
         scale += 1;
         scaleChanged = true;
@@ -171,4 +171,27 @@ function hexToRgb(color)
         parseInt(result[2], 16),
         parseInt(result[3], 16)
     ] : null;
+}
+
+var downX, downY;
+function canvasMouseDown(event)
+{
+    downX = event.offsetX;
+    downY = event.offsetY;
+}
+
+function canvasMouseUp(event)
+{
+    var canvasx, canvasy;
+    canvasx = event.offsetX;
+    canvasy = event.offsetY;
+    if (canvasx != downX || canvasy != downY)
+    {
+        var canvasCenterX = canvasObject.Width / 2;
+        var canvasCenterY = canvasObject.Height / 2;
+        var diffX = canvasx - canvasCenterX;
+        var diffY = canvasy - canvasCenterY;
+        var transform = "translate(" + diffX + "px, " + diffY + "px)";
+        $("#canvas").css("transform", transform);
+    }
 }
