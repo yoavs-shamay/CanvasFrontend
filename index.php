@@ -1,3 +1,4 @@
 <?php
-include_once("Pages/index.html");
+header('Location: Pages/index.html');
+exit;
 ?>
