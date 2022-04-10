@@ -48,13 +48,18 @@ function updateTimerAndButton()
 var scale = 1;
 $(document).on("mousewheel DOMMouseScroll", function(e) {
     var delta = e.originalEvent.wheelDelta || -e.originalEvent.detail;
+    resizeCanvas(delta > 0);
+});
+
+function resizeCanvas(bigger)
+{
     var scaleChanged = false;
-    if (delta > 0 && scale < 50)
+    if (bigger && scale < 50)
     {
         scale += 1;
         scaleChanged = true;
     }
-    else if (delta < 0 && scale > 1)
+    else if (!bigger && scale > 1)
     {
         scale -= 1;
         scaleChanged = true;
@@ -65,7 +70,7 @@ $(document).on("mousewheel DOMMouseScroll", function(e) {
         $("#canvas").attr("height", canvasObject.Height * scale);
         loadCanvas();
     }
-});
+}
 
 var canvasObject;
 function loadCanvas()
@@ -235,4 +240,20 @@ function canvasMouseMove(event)
         $("#canvas").css("left", currentTransformX + "px");
         $("#canvas").css("top", currentTransformY + "px");
     }
+}
+
+var prevWidth = $(window).width();
+var prevHeight = $(window).height();
+window.onresize = function(e)
+{
+    var curWidth = $(window).width();
+    var curHeight = $(window).height();
+    if (curWidth != prevWidth || curHeight != prevHeight)
+    {
+        var madeBigger = curWidth > prevWidth || curHeight > prevHeight;
+        prevWidth = curWidth;
+        prevHeight = curHeight;
+        resizeCanvas(madeBigger);
+    }
+    e.preventDefault();
 }
