@@ -102,7 +102,7 @@ function logout()
         });
     });
 }
-var x,y;
+var x = 0,y = 0;
 function canvasClick(e)
 {
     var pixel = canvasObject.Pixels[x][y];
