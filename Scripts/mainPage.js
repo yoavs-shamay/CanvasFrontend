@@ -44,31 +44,12 @@ function updateTimerAndButton()
     }
 }
 
-var scale = 1;
-var lastScrollTop = 0;
-function canvasScroll(e)
-{
-    var st = $(this).scrollTop();
-    if (st > lastScrollTop)
-    {
-        if (scale < 5)
-        {
-            scale += 1;
-            $("#canvas").css("transform", "scale(" + scale + ")");
-            loadCanvas();
-        }
-    }
-    else
-    {
-        if (scale > 1)
-        {
-            scale -= 1;
-            $("#canvas").css("transform", "scale(" + scale + ")");
-            loadCanvas();
-        }
-    }
-    lastScrollTop = st;
-}
+
+//scale canvas when scrolling
+$(window).scroll(function() {
+    var scale = 1.0 + ($(window).scrollTop() / 500);
+    $("#canvas").css("transform", "scale(" + scale + ")");
+});
 
 var canvasObject;
 function loadCanvas()
