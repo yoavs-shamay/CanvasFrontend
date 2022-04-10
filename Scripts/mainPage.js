@@ -247,7 +247,6 @@ $(window).resize(function(event) {
     var newPx_ratio = window.devicePixelRatio || window.screen.availWidth / document.documentElement.clientWidth;
     if(newPx_ratio != px_ratio){
         resizeCanvas(newPx_ratio > px_ratio);
-        //set browser zoom level to 100%
-        document.body.style.zoom = 1;
+        event.preventDefault();
     }
 });
