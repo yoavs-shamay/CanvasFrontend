@@ -154,7 +154,7 @@ function changeColor()
     $("#pixel-color").prop("disabled", false);
     $("#change-color-button").hide();
     $("#save-button").show();
-    $("#pixel-color").focus();
+    $("#pixel-color").click();
 }
 
 function saveColor()
@@ -242,3 +242,5 @@ function canvasMouseMove(event)
         $("#canvas").css("top", currentTransformY + "px");
     }
 }
+
+//support mobile: zooming and dragging
