@@ -114,7 +114,7 @@ function canvasClick(e)
     $("#pixel-info").show();
     var canvasx = e.offsetX;
     var canvasy = e.offsetY;
-    if (canvasx < 0 || canvasy < 0 || canvasX > $("#canvas").width() || canvasy > $("#canvas").height())
+    if (canvasx < 0 || canvasy < 0 || canvasx > $("#canvas").width() || canvasy > $("#canvas").height())
     {
         $("#pixel-info").hide();
         return;
