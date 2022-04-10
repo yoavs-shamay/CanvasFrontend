@@ -180,18 +180,13 @@ function canvasMouseDown(event)
     downY = event.offsetY;
 }
 
-function canvasMouseUp(event)
+function canvasMouseMove(event)
 {
     var canvasx, canvasy;
     canvasx = event.offsetX;
     canvasy = event.offsetY;
-    if (canvasx != downX || canvasy != downY)
-    {
-        var canvasCenterX = canvasObject.Width / 2;
-        var canvasCenterY = canvasObject.Height / 2;
-        var diffX = canvasx - canvasCenterX;
-        var diffY = canvasy - canvasCenterY;
-        var transform = "translate(" + diffX + "px, " + diffY + "px)";
-        $("#canvas").css("transform", transform);
-    }
+    var offsetX = canvasx - downX;
+    var offsetY = canvasy - downY;
+    var transform = "translate(" + offsetX + "px, " + offsetY + "px)";
+    $("#canvas").css("transform", transform);
 }
