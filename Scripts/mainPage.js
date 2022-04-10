@@ -123,6 +123,8 @@ function canvasClick(e)
     loadCanvas();
     $("#pixel-color").val(color);
     $("#pixel-color").prop("disabled", true);
+    $("#pixel-coords").text("(" + x + "," + y + ")");
+    $("#pixel-modifier").val(pixel.LastModifier);
     if (remainingTime > 0)
     {
         $("#timer").show();
