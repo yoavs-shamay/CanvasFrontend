@@ -154,6 +154,7 @@ function changeColor()
     $("#pixel-color").prop("disabled", false);
     $("#change-color-button").hide();
     $("#save-button").show();
+    $("#pixel-color").focus();
 }
 
 function saveColor()
