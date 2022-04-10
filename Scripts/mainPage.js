@@ -45,29 +45,21 @@ function updateTimerAndButton()
 }
 
 
-//scale canvas when wheeling
+var scale = 1;
 $(document).on("mousewheel DOMMouseScroll", function(e) {
     var delta = e.originalEvent.wheelDelta || -e.originalEvent.detail;
     var scale = 1;
-    if (delta < 0)
+    if (delta < 0 && scale < 5)
     {
-        scale = 1.1;
+        scale += 1;
     }
-    else
+    else if (delta > 0 && scale > 1)
     {
-        scale = 0.9;
+        scale -= 1;
     }
-    var canvas = document.getElementById("canvas");
-    var ctx = canvas.getContext("2d");
-    var width = canvas.width;
-    var height = canvas.height;
-    var x = e.pageX - canvas.offsetLeft;
-    var y = e.pageY - canvas.offsetTop;
-    ctx.translate(x, y);
-    ctx.scale(scale, scale);
-    ctx.translate(-x, -y);
-    canvas.width = width * scale;
-    canvas.height = height * scale;
+    $("#canvas").attr("width", canvasObject.Width * scale);
+    $("#canvas").attr("height", canvasObject.Height * scale);
+    $("#canvas").css("transform", "scale(" + scale + ")");
 });
 
 var canvasObject;
@@ -77,8 +69,8 @@ function loadCanvas()
         canvasObject = JSON.parse(canvas);
         var width = canvasObject.Width;
         var height = canvasObject.Height;
-        $("#canvas").attr("width", width);
-        $("#canvas").attr("height", height);
+        $("#canvas").attr("width", width * scale);
+        $("#canvas").attr("height", height * scale);
         var pixels = canvasObject.Pixels;
         var ctx = $("#canvas")[0].getContext("2d");
         for (var i = 0; i < pixels.length; i++)
