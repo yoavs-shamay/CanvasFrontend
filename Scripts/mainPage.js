@@ -89,6 +89,8 @@ function loadCanvas()
             }
         }
     });
+    ctx.strokeStyle = "#000000";
+    ctx.strokeRect(x * scale, y * scale, scale, scale);
 }
 
 function logout()
