@@ -56,7 +56,10 @@ $(document).on("mousewheel DOMMouseScroll", function(e) {
     {
         scale -= 1;
     }
-    $("#canvas").css("transform", "scale(" + scale + ")");
+    $("#canvas").attr("width", canvasObject.Width * scale);
+    $("#canvas").attr("height", canvasObject.Height * scale);
+    var ctx = $("#canvas")[0].getContext("2d");
+    ctx.scale(scale, scale);
 });
 
 var canvasObject;
@@ -66,8 +69,8 @@ function loadCanvas()
         canvasObject = JSON.parse(canvas);
         var width = canvasObject.Width;
         var height = canvasObject.Height;
-        $("#canvas").attr("width", width);
-        $("#canvas").attr("height", height);
+        $("#canvas").attr("width", width * scale);
+        $("#canvas").attr("height", height * scale);
         var pixels = canvasObject.Pixels;
         var ctx = $("#canvas")[0].getContext("2d");
         for (var i = 0; i < pixels.length; i++)
