@@ -45,10 +45,29 @@ function updateTimerAndButton()
 }
 
 
-//scale canvas when scrolling
-$(window).scroll(function() {
-    var scale = 1.0 + ($(window).scrollTop() / 500);
-    $("#canvas").css("transform", "scale(" + scale + ")");
+//scale canvas when wheeling
+$(document).on("mousewheel DOMMouseScroll", function(e) {
+    var delta = e.originalEvent.wheelDelta || -e.originalEvent.detail;
+    var scale = 1;
+    if (delta < 0)
+    {
+        scale = 1.1;
+    }
+    else
+    {
+        scale = 0.9;
+    }
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    var width = canvas.width;
+    var height = canvas.height;
+    var x = e.pageX - canvas.offsetLeft;
+    var y = e.pageY - canvas.offsetTop;
+    ctx.translate(x, y);
+    ctx.scale(scale, scale);
+    ctx.translate(-x, -y);
+    canvas.width = width * scale;
+    canvas.height = height * scale;
 });
 
 var canvasObject;
