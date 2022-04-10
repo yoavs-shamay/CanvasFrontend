@@ -173,20 +173,29 @@ function hexToRgb(color)
     ] : null;
 }
 
-var downX, downY;
+var downX, downY, mouseDown;
 function canvasMouseDown(event)
 {
     downX = event.offsetX;
     downY = event.offsetY;
+    mouseDown = true;
+}
+
+function canvasMouseUp(event)
+{
+    mouseDown = false;
 }
 
 function canvasMouseMove(event)
 {
-    var canvasx, canvasy;
-    canvasx = event.offsetX;
-    canvasy = event.offsetY;
-    var offsetX = canvasx - downX;
-    var offsetY = canvasy - downY;
-    var transform = "translate(" + offsetX + "px, " + offsetY + "px)";
-    $("#canvas").css("transform", transform);
-}
+    if (mouseDown)
+    {
+        var canvasx, canvasy;
+        canvasx = event.offsetX;
+        canvasy = event.offsetY;
+        var offsetX = canvasx - downX;
+        var offsetY = canvasy - downY;
+        var transform = "translate(" + offsetX + "px, " + offsetY + "px)";
+        $("#canvas").css("transform", transform);
+    }
+    }
