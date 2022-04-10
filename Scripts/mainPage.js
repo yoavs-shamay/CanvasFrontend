@@ -198,6 +198,30 @@ function canvasMouseMove(event)
         var prevTransform = $("#canvas").css("transform");
         var prevTrasnsformX = parseInt(prevTransform.substring(prevTransform.indexOf("(") + 1, prevTransform.indexOf(",")));
         var prevTrasnsformY = parseInt(prevTransform.substring(prevTransform.indexOf(",") + 1, prevTransform.indexOf(")")));
+        var currentTransformX = prevTrasnsformX + offsetX;
+        var currentTransformY = prevTrasnsformY + offsetY;
+        var canvasDivHeight = $("#canvas-div").height();
+        var canvasDivWidth = $("#canvas-div").width();
+        var maxTransformX = canvasDivWidth - canvasObject.Width * scale;
+        var maxTransformY = canvasDivHeight - canvasObject.Height * scale;
+        var minTransformX = -canvasObject.Width * scale + canvasDivWidth;
+        var minTransformY = -canvasObject.Height * scale + canvasDivHeight;
+        if (currentTransformX > maxTransformX)
+        {
+            currentTransformX = maxTransformX;
+        }
+        else if (currentTransformX < minTransformX)
+        {
+            currentTransformX = minTransformX;
+        }
+        if (currentTransformY > maxTransformY)
+        {
+            currentTransformY = maxTransformY;
+        }
+        else if (currentTransformY < minTransformY)
+        {
+            currentTransformY = minTransformY;
+        }
         $("#canvas").css("transform", "translate(" + (prevTrasnsformX + offsetX) + "px, " + (prevTrasnsformY + offsetY) + "px)");
     }
 }
