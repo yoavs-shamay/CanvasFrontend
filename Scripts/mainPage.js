@@ -60,7 +60,7 @@ function scaleCanvas(e) {
     $("#canvas").attr("width", canvasObject.Width * scale);
     $("#canvas").attr("height", canvasObject.Height * scale);
     $("#canvas").css("transform", "scale(" + scale + ")");
-});
+};
 
 var canvasObject;
 function loadCanvas()
