@@ -88,9 +88,9 @@ function loadCanvas()
                 ctx.fillRect(pixel.X * scale, pixel.Y * scale, scale, scale);
             }
         }
+        ctx.strokeStyle = "#000000";
+        ctx.strokeRect(x * scale, y * scale, scale, scale);
     });
-    ctx.strokeStyle = "#000000";
-    ctx.strokeRect(x * scale, y * scale, scale, scale);
 }
 
 function logout()
