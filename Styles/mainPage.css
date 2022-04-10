@@ -30,7 +30,14 @@ body
 {
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     cursor: pointer;
     margin: 10px;
+}
+
+.pixel-info
+{
+    position: absolute;
+    bottom: 10px;
+    text-align:center;
 }
