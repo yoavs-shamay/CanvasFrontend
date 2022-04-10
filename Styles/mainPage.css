@@ -1,0 +1,12 @@
+.canvasDiv
+{
+    position: relative;
+    width: 100%;
+    height: 70%;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    transform: translateY(-50%);
+}
