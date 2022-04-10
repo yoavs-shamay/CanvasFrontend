@@ -9,7 +9,7 @@ function backendHttpRequest(path, params, callback)
         dataType: "json",
         async: true,
         complete: function (xhr, status) {
-            callback(xhr.responseText);
+            callback(xhr.responseText, status);
         }
     });
 }
