@@ -246,6 +246,7 @@ var normalWidth = $(window).width();
 var normalHeight = $(window).height();
 window.onresize = function(e)
 {
+    alert("resize!");
     var curWidth = $(window).width();
     var curHeight = $(window).height();
     if (curWidth != normalWidth || curHeight != normalHeight)
