@@ -58,8 +58,7 @@ $(document).on("mousewheel DOMMouseScroll", function(e) {
     }
     $("#canvas").attr("width", canvasObject.Width * scale);
     $("#canvas").attr("height", canvasObject.Height * scale);
-    var ctx = $("#canvas")[0].getContext("2d");
-    ctx.scale(scale, scale);
+    loadCanvas();
 });
 
 var canvasObject;
@@ -80,7 +79,7 @@ function loadCanvas()
                 var pixel = pixels[i][j];
                 var color = "#" + ("000000" + rgbToHex(pixel.Red, pixel.Green, pixel.Blue)).slice(-6);
                 ctx.fillStyle = color;
-                ctx.fillRect(pixel.X, pixel.Y, 1, 1);
+                ctx.fillRect(pixel.X * scale, pixel.Y * scale, scale, scale);
             }
         }
     });
