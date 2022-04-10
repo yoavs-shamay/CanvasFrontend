@@ -108,10 +108,25 @@ function canvasClick(e)
     $("#pixel-info").show();
     var canvasx = e.offsetX;
     var canvasy = e.offsetY;
+    if (canvasx < 0 || canvasy < 0 || canvasX > $("#canvas").width() || canvasy > $("#canvas").height())
+    {
+        $("#pixel-info").hide();
+        var pixel = canvasObject.Pixels[x][y];
+        var color = "#" + ("000000" + rgbToHex(pixel.Red, pixel.Green, pixel.Blue)).slice(-6);
+        var ctx = $("#canvas")[0].getContext("2d");
+        ctx.fillStyle = color;
+        ctx.strokeStyle = "rgba(1, 1, 1, 0)";
+        ctx.fillRect(x * scale, y * scale, scale, scale);
+        return;
+    }
     x = Math.floor(canvasx / scale);
     y = Math.floor(canvasy / scale);
     var pixel = canvasObject.Pixels[x][y];
     var color = "#" + ("000000" + rgbToHex(pixel.Red, pixel.Green, pixel.Blue)).slice(-6);
+    var ctx = $("#canvas")[0].getContext("2d");
+    ctx.fillStyle = color;
+    ctx.strokeStyle = "#000000";
+    ctx.fillRect(x * scale, y * scale, scale, scale);
     $("#pixel-color").val(color);
     $("#pixel-color").prop("disabled", true);
     if (remainingTime > 0)
