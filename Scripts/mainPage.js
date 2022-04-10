@@ -197,5 +197,7 @@ function canvasMouseMove(event)
         var offsetY = canvasy - downY;
         var transform = "translate(" + offsetX + "px, " + offsetY + "px)";
         $("#canvas").css("transform", transform);
+        downX = canvasx;
+        downY = canvasy;   
     }
-    }
+}
