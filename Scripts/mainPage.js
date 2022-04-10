@@ -105,18 +105,18 @@ function logout()
 var x,y;
 function canvasClick(e)
 {
+    var pixel = canvasObject.Pixels[x][y];
+    var color = "#" + ("000000" + rgbToHex(pixel.Red, pixel.Green, pixel.Blue)).slice(-6);
+    var ctx = $("#canvas")[0].getContext("2d");
+    ctx.fillStyle = color;
+    ctx.strokeStyle = "rgba(1, 1, 1, 0)";
+    ctx.fillRect(x * scale, y * scale, scale, scale);
     $("#pixel-info").show();
     var canvasx = e.offsetX;
     var canvasy = e.offsetY;
     if (canvasx < 0 || canvasy < 0 || canvasX > $("#canvas").width() || canvasy > $("#canvas").height())
     {
         $("#pixel-info").hide();
-        var pixel = canvasObject.Pixels[x][y];
-        var color = "#" + ("000000" + rgbToHex(pixel.Red, pixel.Green, pixel.Blue)).slice(-6);
-        var ctx = $("#canvas")[0].getContext("2d");
-        ctx.fillStyle = color;
-        ctx.strokeStyle = "rgba(1, 1, 1, 0)";
-        ctx.fillRect(x * scale, y * scale, scale, scale);
         return;
     }
     x = Math.floor(canvasx / scale);
