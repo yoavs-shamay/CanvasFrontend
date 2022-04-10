@@ -10,9 +10,9 @@ $(function() {
     backendHttpRequest("GetRemainingTime", { "sessionId": sessionId }, function(serverRemainingTime, status) {
         remainingTime = parseFloat(serverRemainingTime);
         setInterval(reduceRemainingTime, 1000);
+        setInterval(loadCanvas, 1000);
         updateTimerAndButton();
     });
-    setInterval(loadCanvas, 1000);
 });
 
 function reduceRemainingTime()
