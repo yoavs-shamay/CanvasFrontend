@@ -1,6 +1,6 @@
 .canvasDiv
 {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 70%;
     background-color: #f2f2f2;
@@ -10,4 +10,9 @@
     top: 50%;
     transform: translateY(-50%);
     overflow: hidden;
+}
+
+.canvas
+{
+    position: absolute;
 }
