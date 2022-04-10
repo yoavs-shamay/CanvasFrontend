@@ -48,7 +48,6 @@ function updateTimerAndButton()
 var scale = 1;
 $(document).on("mousewheel DOMMouseScroll", function(e) {
     var delta = e.originalEvent.wheelDelta || -e.originalEvent.detail;
-    var scale = 1;
     if (delta < 0 && scale < 5)
     {
         scale += 1;
