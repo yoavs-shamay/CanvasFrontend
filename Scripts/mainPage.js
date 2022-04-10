@@ -6,10 +6,10 @@ $(function() {
         window.location.href = "login.html";
         return;
     }
-    loadCanvas();
     backendHttpRequest("GetRemainingTime", { "sessionId": sessionId }, function(serverRemainingTime, status) {
         remainingTime = parseFloat(serverRemainingTime);
         setInterval(reduceRemainingTime, 1000);
+        loadCanvas();
         setInterval(loadCanvas, 1000);
         updateTimerAndButton();
     });
