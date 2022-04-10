@@ -66,8 +66,6 @@ function resizeCanvas(bigger)
     }
     if (scaleChanged)
     {
-        $("#canvas").attr("width", canvasObject.Width * scale);
-        $("#canvas").attr("height", canvasObject.Height * scale);
         loadCanvas();
     }
 }
