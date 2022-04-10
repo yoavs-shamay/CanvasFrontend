@@ -106,11 +106,11 @@ var x,y;
 function canvasClick(e)
 {
     $("#pixel-info").show();
-    x = e.offsetX;
-    y = e.offsetY;
-    var actualX = Math.floor(x / scale);
-    var actualY = Math.floor(y / scale);
-    var pixel = canvasObject.Pixels[actualX][actualY];
+    var canvasx = e.offsetX;
+    var canvasy = e.offsetY;
+    x = Math.floor(canvasx / scale);
+    y = Math.floor(canvasy / scale);
+    var pixel = canvasObject.Pixels[x][y];
     var color = "#" + ("000000" + rgbToHex(pixel.Red, pixel.Green, pixel.Blue)).slice(-6);
     $("#pixel-color").val(color);
     $("#pixel-color").prop("disabled", true);
