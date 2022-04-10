@@ -197,8 +197,8 @@ function canvasMouseMove(event)
         var offsetY = canvasy - downY;
         var prevTransformX = parseInt($("#canvas").css("left"));
         var prevTransformY = parseInt($("#canvas").css("top"));
-        var currentTransformX = prevTrasnsformX + offsetX;
-        var currentTransformY = prevTrasnsformY + offsetY;
+        var currentTransformX = prevTransformX + offsetX;
+        var currentTransformY = prevTransformY + offsetY;
         var canvasDivHeight = $("#canvas-div").height();
         var canvasDivWidth = $("#canvas-div").width();
         var maxTransformX = canvasDivWidth - canvasObject.Width * scale;
