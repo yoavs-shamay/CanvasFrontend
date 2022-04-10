@@ -222,6 +222,6 @@ function canvasMouseMove(event)
         {
             currentTransformY = minTransformY;
         }
-        $("#canvas").css("transform", "translate(" + (prevTrasnsformX + offsetX) + "px, " + (prevTrasnsformY + offsetY) + "px)");
+        $("#canvas").css("transform", "translate(" + currentTransformX + "px, " + currentTransformY + "px)");
     }
 }
