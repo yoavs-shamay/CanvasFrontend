@@ -13,13 +13,6 @@ $(function() {
         setInterval(loadCanvas, 1000);
         updateTimerAndButton();
     });
-    var el=document.getElementById("canvas");
-    el.onpointerdown = pointerdown_handler;
-    el.onpointermove = pointermove_handler;
-    el.onpointerup = pointerup_handler;
-    el.onpointercancel = pointerup_handler;
-    el.onpointerout = pointerup_handler;
-    el.onpointerleave = pointerup_handler;
 });
 
 function reduceRemainingTime()
@@ -246,51 +239,5 @@ function canvasMouseMove(event)
         }
         $("#canvas").css("left", currentTransformX + "px");
         $("#canvas").css("top", currentTransformY + "px");
-    }
-}
-
-var evCache = new Array();
-var prevDiff = -1;
-
-function pointerdown_handler(ev) {
-    evCache.push(ev);
-}
-function pointermove_handler(ev) {
-    for (var i = 0; i < evCache.length; i++) {
-      if (ev.pointerId == evCache[i].pointerId) {
-         evCache[i] = ev;
-      break;
-      }
-    }
-   
-    if (evCache.length == 2) {
-      var curDiff = Math.abs(evCache[0].clientX - evCache[1].clientX);
-   
-      if (prevDiff > 0) {
-        if (curDiff > prevDiff) {
-          resizeCanvas(true);
-        }
-        if (curDiff < prevDiff) {
-          resizeCanvas(false);
-        }
-      }
-      prevDiff = curDiff;
-    }
-   }
-
-   function pointerup_handler(ev) {
-    remove_event(ev);
-  
-    if (evCache.length < 2) {
-      prevDiff = -1;
-    }
-  }
-
-function remove_event(ev) {
-    for (var i = 0; i < evCache.length; i++) {
-        if (evCache[i].pointerId == ev.pointerId) {
-        evCache.splice(i, 1);
-        break;
-        }
     }
 }
