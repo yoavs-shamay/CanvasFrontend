@@ -46,7 +46,7 @@ function updateTimerAndButton()
 
 
 var scale = 1;
-function scaleCanvas(e) {
+$(document).on("mousewheel DOMMouseScroll", function(e) {
     var delta = e.originalEvent.wheelDelta || -e.originalEvent.detail;
     var scale = 1;
     if (delta < 0 && scale < 5)
@@ -60,7 +60,7 @@ function scaleCanvas(e) {
     $("#canvas").attr("width", canvasObject.Width * scale);
     $("#canvas").attr("height", canvasObject.Height * scale);
     $("#canvas").css("transform", "scale(" + scale + ")");
-};
+});
 
 var canvasObject;
 function loadCanvas()
