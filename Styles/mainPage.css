@@ -25,3 +25,12 @@ body
 {
     position: relative;
 }
+
+.logout-button
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    margin: 10px;
+}
