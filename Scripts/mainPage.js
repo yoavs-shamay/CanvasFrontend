@@ -249,14 +249,8 @@ function canvasMouseMove(event)
     }
 }
 
-var px_ratio = window.devicePixelRatio || window.screen.availWidth / document.documentElement.clientWidth;
-$(window).resize(function(event) {
-    var newPx_ratio = window.devicePixelRatio || window.screen.availWidth / document.documentElement.clientWidth;
-    if(newPx_ratio != px_ratio){
-        resizeCanvas(newPx_ratio > px_ratio);
-        event.preventDefault();
-    }
-});
+var evCache = new Array();
+var prevDiff = -1;
 
 function pointerdown_handler(ev) {
     evCache.push(ev);
