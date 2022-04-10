@@ -181,7 +181,7 @@ function canvasMouseDown(event)
     mouseDown = true;
 }
 
-function canvasMouseUp(event)
+function mouseUp(event)
 {
     mouseDown = false;
 }
