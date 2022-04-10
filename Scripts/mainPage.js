@@ -6,11 +6,13 @@ $(function() {
         window.location.href = "login.html";
         return;
     }
+    loadCanvas();
     setInterval(loadCanvas, 1000);
     backendHttpRequest("GetRemainingTime", { "sessionId": sessionId }, function(serverRemainingTime) {
         remainingTime = serverRemainingTime;
         setInterval(reduceRemainingTime, 1000);
     });
+    updateTimerAndButton();
 });
 
 function reduceRemainingTime()
@@ -21,6 +23,16 @@ function reduceRemainingTime()
         var minutes = Math.floor(remainingTime);
         var seconds = Math.floor((remainingTime - minutes) * 60);
         $("#timer").text(minutes + ":" + seconds);
+    }
+    updateTimerAndButton();
+}
+
+function updateTimerAndButton()
+{
+    if (remainingTime > 0)
+    {
+        $("#timer").show();
+        $("#change-color-button").hide();
     }
     else
     {
