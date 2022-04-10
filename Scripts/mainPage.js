@@ -242,20 +242,11 @@ function canvasMouseMove(event)
     }
 }
 
-var normalWidth = $(window).width();
-var normalHeight = $(window).height();
-//detect window zoom and prevent default
+var px_ratio = window.devicePixelRatio || window.screen.availWidth / document.documentElement.clientWidth;
 $(window).resize(function(event) {
-    if ($(window).width() != normalWidth || $(window).height() != normalHeight)
-    {
-        event.preventDefault();
+    var newPx_ratio = window.devicePixelRatio || window.screen.availWidth / document.documentElement.clientWidth;
+    if(newPx_ratio != px_ratio){
+        resizeCanvas(newPx_ratio > px_ratio);
+        document.body.style.zoom = "100%";
     }
-    var isBigger = $(window).width() > normalWidth || $(window).height() > normalHeight;
-    resizeCanvas(isBigger);
-});
-//detect zoom on mobile
-$(document).on("touchmove", function(event) {
-    var isBigger = $(window).width() > normalWidth || $(window).height() > normalHeight;
-    resizeCanvas(isBigger);
-    event.preventDefault();
 });
