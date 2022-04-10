@@ -108,11 +108,6 @@ var x = 0,y = 0;
 function canvasClick(e)
 {
     var pixel = canvasObject.Pixels[x][y];
-    var color = "#" + ("000000" + rgbToHex(pixel.Red, pixel.Green, pixel.Blue)).slice(-6);
-    var ctx = $("#canvas")[0].getContext("2d");
-    ctx.fillStyle = color;
-    ctx.strokeStyle = "rgba(1, 1, 1, 0)";
-    ctx.fillRect(x * scale, y * scale, scale, scale);
     $("#pixel-info").show();
     var canvasx = e.offsetX;
     var canvasy = e.offsetY;
@@ -125,9 +120,7 @@ function canvasClick(e)
     y = Math.floor(canvasy / scale);
     var pixel = canvasObject.Pixels[x][y];
     var color = "#" + ("000000" + rgbToHex(pixel.Red, pixel.Green, pixel.Blue)).slice(-6);
-    var ctx = $("#canvas")[0].getContext("2d");
-    ctx.strokeStyle = "#000000";
-    ctx.strokeRect(x * scale, y * scale, scale, scale);
+    loadCanvas();
     $("#pixel-color").val(color);
     $("#pixel-color").prop("disabled", true);
     if (remainingTime > 0)
