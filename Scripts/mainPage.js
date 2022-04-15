@@ -55,11 +55,11 @@ $(function() {
                 var distance = Math.sqrt((x2 - x) * (x2 - x) + (y2 - y) * (y2 - y));
                 if (distance > prevDistance)
                 {
-                    resizeCanvas(true);
+                    resizeCanvas(true, 0.1);
                 }
                 else if (distance < prevDistance)
                 {
-                    resizeCanvas(false);
+                    resizeCanvas(false, 0.1);
                 }
                 prevDistance = distance;
             }
@@ -114,20 +114,20 @@ function updateTimerAndButton()
 var scale = 1;
 $(document).on("mousewheel DOMMouseScroll", function(e) {
     var delta = e.originalEvent.wheelDelta || -e.originalEvent.detail;
-    resizeCanvas(delta > 0);
+    resizeCanvas(delta > 0, 1);
 });
 
-function resizeCanvas(bigger)
+function resizeCanvas(bigger, amount)
 {
     var scaleChanged = false;
     if (bigger && scale < 50)
     {
-        scale += 1;
+        scale += amount;
         scaleChanged = true;
     }
     else if (!bigger && scale > 1)
     {
-        scale -= 1;
+        scale -= amount;
         scaleChanged = true;
     }
     if (scaleChanged)
