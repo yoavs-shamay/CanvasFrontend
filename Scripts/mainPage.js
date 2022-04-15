@@ -259,5 +259,4 @@ $("#canvas").ontouchmove(function(e) {
         prevDistance = distance;
         resizeCanvas(scale > prevScale);
     }
-}
 });
