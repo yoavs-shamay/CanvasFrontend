@@ -245,6 +245,23 @@ function canvasMouseMove(event)
 
 var prevDistance = 0;
 
+$("#canvas").ontouchstart(function(event) {
+    if (e.touches.length == 1) {
+        var touch = event.originalEvent.touches[0];
+        downX = touch.pageX;
+        downY = touch.pageY;
+        mouseDown = true;
+    }
+    else
+    {
+        var x = event.originalEvent.touches[0].pageX;
+        var y = event.originalEvent.touches[0].pageY;
+        var x2 = event.originalEvent.touches[1].pageX;
+        var y2 = event.originalEvent.touches[1].pageY;
+        prevDistance = Math.sqrt((x2 - x) * (x2 - x) + (y2 - y) * (y2 - y));
+    }
+});
+
 $("#canvas").ontouchmove(function(e) {
     if (e.touches.length === 2) {
         var touch1 = e.touches[0];
@@ -259,4 +276,9 @@ $("#canvas").ontouchmove(function(e) {
         prevDistance = distance;
         resizeCanvas(scale > prevScale);
     }
+});
+
+$("#canvas").ontouchend(function(e) {
+    mouseDown = false;
+    prevDistance = 0;
 });
