@@ -242,3 +242,10 @@ function canvasMouseMove(event)
 }
 
 //support mobile: zooming and dragging
+$("#canvas")[0].addEventListener('gestureend', function(e) {
+    if (e.scale < 1.0) {
+      console.log('Zoom In');
+    } else if (e.scale > 1.0) {
+      console.log('Zoom Out');
+    }
+  }, false);
