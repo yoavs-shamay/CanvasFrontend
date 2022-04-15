@@ -1,6 +1,5 @@
 var remainingTime;
 var prevDistance = 0;
-var mobileScale = 1;
 $(function() {
     var sessionId = localStorage.getItem("sessionId");
     if (sessionId == null)
@@ -49,17 +48,19 @@ $(function() {
         $("#canvasDiv").on("touchmove", function(e) {
             if (e.touches.length === 2) {
                 console.log("touchmove with 2");
-                var touch1 = e.touches[0];
-                var touch2 = e.touches[1];
-                var x1 = touch1.pageX;
-                var y1 = touch1.pageY;
-                var x2 = touch2.pageX;
-                var y2 = touch2.pageY;
-                var distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-                var prevScale = mobileScale;
-                mobileScale = prevScale * distance / prevDistance;
-                prevDistance = distance;
-                resizeCanvas(mobileScale > prevScale);
+                var x = e.originalEvent.touches[0].pageX;
+                var y = e.originalEvent.touches[0].pageY;
+                var x2 = e.originalEvent.touches[1].pageX;
+                var y2 = e.originalEvent.touches[1].pageY;
+                var distance = Math.sqrt((x2 - x) * (x2 - x) + (y2 - y) * (y2 - y));
+                if (distance > prevDistance)
+                {
+                    resizeCanvas(true);
+                }
+                else if (distance < prevDistance)
+                {
+                    resizeCanvas(false);
+                }
             }
             else if (e.touches.length === 1) {
                 console.log("touchmove with 1");
