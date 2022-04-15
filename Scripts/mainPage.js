@@ -112,6 +112,7 @@ function updateTimerAndButton()
 
 
 var scale = 1;
+var scaleRound = 1;
 $(document).on("mousewheel DOMMouseScroll", function(e) {
     var delta = e.originalEvent.wheelDelta || -e.originalEvent.detail;
     resizeCanvas(delta > 0, 1);
@@ -132,6 +133,7 @@ function resizeCanvas(bigger, amount)
     }
     if (scaleChanged)
     {
+        scaleRound = Math.round(scale);
         loadCanvas();
     }
 }
@@ -143,8 +145,8 @@ function loadCanvas()
         canvasObject = JSON.parse(canvas);
         var width = canvasObject.Width;
         var height = canvasObject.Height;
-        $("#canvas").attr("width", width * scale);
-        $("#canvas").attr("height", height * scale);
+        $("#canvas").attr("width", width * scaleRound);
+        $("#canvas").attr("height", height * scaleRound);
         var pixels = canvasObject.Pixels;
         var ctx = $("#canvas")[0].getContext("2d");
         for (var i = 0; i < pixels.length; i++)
@@ -154,11 +156,11 @@ function loadCanvas()
                 var pixel = pixels[i][j];
                 var color = "#" + ("000000" + rgbToHex(pixel.Red, pixel.Green, pixel.Blue)).slice(-6);
                 ctx.fillStyle = color;
-                ctx.fillRect(pixel.X * scale, pixel.Y * scale, scale, scale);
+                ctx.fillRect(pixel.X * scaleRound, pixel.Y * scaleRound, scaleRound, scaleRound);
             }
         }
         ctx.strokeStyle = "#000000";
-        ctx.strokeRect(x * scale, y * scale, scale, scale);
+        ctx.strokeRect(x * scaleRound, y * scaleRound, scaleRound, scaleRound);
     });
 }
 
@@ -185,8 +187,8 @@ function canvasClick(e)
         $("#pixel-info").hide();
         return;
     }
-    x = Math.floor(canvasx / scale);
-    y = Math.floor(canvasy / scale);
+    x = Math.floor(canvasx / scaleRound);
+    y = Math.floor(canvasy / scaleRound);
     var pixel = canvasObject.Pixels[x][y];
     var color = "#" + ("000000" + rgbToHex(pixel.Red, pixel.Green, pixel.Blue)).slice(-6);
     loadCanvas();
@@ -282,10 +284,10 @@ function canvasMouseMove(event)
         var currentTransformY = prevTransformY + offsetY;
         var canvasDivHeight = $("#canvas-div").height();
         var canvasDivWidth = $("#canvas-div").width();
-        var maxTransformX = canvasDivWidth - canvasObject.Width * scale;
-        var maxTransformY = canvasDivHeight - canvasObject.Height * scale;
-        var minTransformX = -canvasObject.Width * scale + canvasDivWidth;
-        var minTransformY = -canvasObject.Height * scale + canvasDivHeight;
+        var maxTransformX = canvasDivWidth - canvasObject.Width * scaleRound;
+        var maxTransformY = canvasDivHeight - canvasObject.Height * scaleRound;
+        var minTransformX = -canvasObject.Width * scaleRound + canvasDivWidth;
+        var minTransformY = -canvasObject.Height * scaleRound + canvasDivHeight;
         if (currentTransformX > maxTransformX)
         {
             currentTransformX = maxTransformX;
