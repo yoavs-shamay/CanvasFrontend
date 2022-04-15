@@ -24,10 +24,10 @@ $(function() {
     {
         $("#canvasDiv").on("touchstart", function(event) {
             console.log("touchstart");
-            if (e.touches.length == 1) {
+            if (event.touches.length == 1) {
                 var touch = event.originalEvent.touches[0];
                 var r = canvas.getBoundingClientRect();
-                var touch = e.touches[0];
+                var touch = event.touches[0];
                 var x = touch.pageX - r.left;
                 var y = touch.pageY - r.top;
                 downX = x;
