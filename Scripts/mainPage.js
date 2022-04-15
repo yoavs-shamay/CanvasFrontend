@@ -244,7 +244,7 @@ function canvasMouseMove(event)
 var prevDistance = 0;
 var mobileScale = 1;
 
-$("#canvas").on("touchstart", function(event) {
+$("#canvasDiv").on("touchstart", function(event) {
     console.log("touchstart");
     if (e.touches.length == 1) {
         var touch = event.originalEvent.touches[0];
@@ -268,7 +268,7 @@ $("#canvas").on("touchstart", function(event) {
 });
 
 
-$("#canvas").on("touchmove", function(e) {
+$("#canvasDiv").on("touchmove", function(e) {
     if (e.touches.length === 2) {
         console.log("touchmove with 2");
         var touch1 = e.touches[0];
@@ -293,7 +293,7 @@ $("#canvas").on("touchmove", function(e) {
     }
 });
 
-$("#canvas").on("touchend", function(e) {
+$("#canvasDiv").on("touchend", function(e) {
     console.log("touchend");
     mouseDown = false;
     prevDistance = 0;
