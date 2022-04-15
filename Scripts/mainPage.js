@@ -55,11 +55,11 @@ $(function() {
                 var distance = Math.sqrt((x2 - x) * (x2 - x) + (y2 - y) * (y2 - y));
                 if (distance > prevDistance)
                 {
-                    resizeCanvas(true, 0.1);
+                    resizeCanvas(true, 0.2);
                 }
                 else if (distance < prevDistance)
                 {
-                    resizeCanvas(false, 0.1);
+                    resizeCanvas(false, 0.2);
                 }
                 prevDistance = distance;
             }
