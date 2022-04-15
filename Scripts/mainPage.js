@@ -242,6 +242,7 @@ function canvasMouseMove(event)
 }
 
 var prevDistance = 0;
+var mobileScale = 1;
 
 $("#canvas").on("touchstart", function(event) {
     if (e.touches.length == 1) {
@@ -254,15 +255,17 @@ $("#canvas").on("touchstart", function(event) {
         downY = y;
         mouseDown = true;
     }
-    else
-    {
-        var x = event.originalEvent.touches[0].pageX;
-        var y = event.originalEvent.touches[0].pageY;
-        var x2 = event.originalEvent.touches[1].pageX;
-        var y2 = event.originalEvent.touches[1].pageY;
-        prevDistance = Math.sqrt((x2 - x) * (x2 - x) + (y2 - y) * (y2 - y));
-    }
+    //else
+    //{
+    //    var x = event.originalEvent.touches[0].pageX;
+    //    var y = event.originalEvent.touches[0].pageY;
+    //    var x2 = event.originalEvent.touches[1].pageX;
+    //    var y2 = event.originalEvent.touches[1].pageY;
+    //    prevDistance = Math.sqrt((x2 - x) * (x2 - x) + (y2 - y) * (y2 - y));
+    //}
+    prevDistance = 0;
 });
+
 
 $("#canvas").on("touchmove", function(e) {
     if (e.touches.length === 2) {
@@ -273,10 +276,10 @@ $("#canvas").on("touchmove", function(e) {
         var x2 = touch2.pageX;
         var y2 = touch2.pageY;
         var distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-        var prevScale = scale;
-        scale = prevScale * distance / prevDistance;
+        var prevScale = mobileScale;
+        mobileScale = prevScale * distance / prevDistance;
         prevDistance = distance;
-        resizeCanvas(scale > prevScale);
+        resizeCanvas(mobileScale > prevScale);
     }
     else if (e.touches.length === 1) {
         var r = canvas.getBoundingClientRect();
