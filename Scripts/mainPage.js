@@ -61,6 +61,7 @@ $(function() {
                 {
                     resizeCanvas(false);
                 }
+                prevDistance = distance;
             }
             else if (e.touches.length === 1) {
                 console.log("touchmove with 1");
