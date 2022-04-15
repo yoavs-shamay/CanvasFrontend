@@ -168,12 +168,12 @@ function saveColor()
         "blue": colorRGB[2]
     };
     $("#pixel-color").prop("disabled", true);
-    remainingTime = 5;
     $("#save-button").hide();
     $("#change-color-button").hide();
     $("#timer").show();
     $("#timer").text("5:00");
     backendHttpRequest("ChangePixel", params, function() {
+        remainingTime = 5;
         loadCanvas();
     });
 }
