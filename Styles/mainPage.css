@@ -6,7 +6,6 @@ body
     -ms-user-select: none;
     -o-user-select: none;
     margin: 0;
-    overscroll-behavior-y: contain;
 }
 
 .canvasDiv
@@ -21,6 +20,7 @@ body
     top: 50%;
     transform: translateY(-50%);
     overflow: hidden;
+    overscroll-behavior-y: contain;
 }
 
 .canvas
