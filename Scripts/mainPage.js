@@ -243,7 +243,7 @@ function canvasMouseMove(event)
 
 var prevDistance = 0;
 
-$("#canvas").touchstart(function(event) {
+$("#canvas").on("touchstart", function(event) {
     if (e.touches.length == 1) {
         var touch = event.originalEvent.touches[0];
         var r = canvas.getBoundingClientRect();
@@ -264,7 +264,7 @@ $("#canvas").touchstart(function(event) {
     }
 });
 
-$("#canvas").touchmove(function(e) {
+$("#canvas").on("touchmove", function(e) {
     if (e.touches.length === 2) {
         var touch1 = e.touches[0];
         var touch2 = e.touches[1];
@@ -287,7 +287,7 @@ $("#canvas").touchmove(function(e) {
     }
 });
 
-$("#canvas").touchend(function(e) {
+$("#canvas").on("touchend", function(e) {
     mouseDown = false;
     prevDistance = 0;
 });
