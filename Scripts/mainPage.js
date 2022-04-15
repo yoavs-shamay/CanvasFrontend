@@ -245,6 +245,7 @@ var prevDistance = 0;
 var mobileScale = 1;
 
 $("#canvas").on("touchstart", function(event) {
+    console.log("touchstart");
     if (e.touches.length == 1) {
         var touch = event.originalEvent.touches[0];
         var r = canvas.getBoundingClientRect();
@@ -269,6 +270,7 @@ $("#canvas").on("touchstart", function(event) {
 
 $("#canvas").on("touchmove", function(e) {
     if (e.touches.length === 2) {
+        console.log("touchmove with 2");
         var touch1 = e.touches[0];
         var touch2 = e.touches[1];
         var x1 = touch1.pageX;
@@ -282,6 +284,7 @@ $("#canvas").on("touchmove", function(e) {
         resizeCanvas(mobileScale > prevScale);
     }
     else if (e.touches.length === 1) {
+        console.log("touchmove with 1");
         var r = canvas.getBoundingClientRect();
         var touch = e.touches[0];
         var x = touch.pageX - r.left;
@@ -291,6 +294,7 @@ $("#canvas").on("touchmove", function(e) {
 });
 
 $("#canvas").on("touchend", function(e) {
+    console.log("touchend");
     mouseDown = false;
     prevDistance = 0;
 });
