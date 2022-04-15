@@ -6,6 +6,7 @@ body
     -ms-user-select: none;
     -o-user-select: none;
     margin: 0;
+    overscroll-behavior-y: contain;
 }
 
 .canvasDiv
