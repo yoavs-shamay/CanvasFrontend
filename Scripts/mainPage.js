@@ -241,15 +241,17 @@ function canvasMouseMove(event)
     }
 }
 
-//support mobile: zooming and dragging
-
 var prevDistance = 0;
 
-$("#canvas").ontouchstart(function(event) {
+$("#canvas").touchstart(function(event) {
     if (e.touches.length == 1) {
         var touch = event.originalEvent.touches[0];
-        downX = touch.pageX;
-        downY = touch.pageY;
+        var r = canvas.getBoundingClientRect();
+        var touch = e.touches[0];
+        var x = touch.pageX - r.left;
+        var y = touch.pageY - r.top;
+        downX = x;
+        downY = y;
         mouseDown = true;
     }
     else
@@ -262,7 +264,7 @@ $("#canvas").ontouchstart(function(event) {
     }
 });
 
-$("#canvas").ontouchmove(function(e) {
+$("#canvas").touchmove(function(e) {
     if (e.touches.length === 2) {
         var touch1 = e.touches[0];
         var touch2 = e.touches[1];
@@ -276,9 +278,16 @@ $("#canvas").ontouchmove(function(e) {
         prevDistance = distance;
         resizeCanvas(scale > prevScale);
     }
+    else if (e.touches.length === 1) {
+        var r = canvas.getBoundingClientRect();
+        var touch = e.touches[0];
+        var x = touch.pageX - r.left;
+        var y = touch.pageY - r.top;
+        canvasMouseMove({offsetX: x, offsetY: y});
+    }
 });
 
-$("#canvas").ontouchend(function(e) {
+$("#canvas").touchend(function(e) {
     mouseDown = false;
     prevDistance = 0;
 });
