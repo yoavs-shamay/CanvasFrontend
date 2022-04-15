@@ -242,10 +242,22 @@ function canvasMouseMove(event)
 }
 
 //support mobile: zooming and dragging
-$("#canvas")[0].addEventListener('gestureend', function(e) {
-    if (e.scale < 1.0) {
-      resizeCanvas(true);
-    } else if (e.scale > 1.0) {
-        resizeCanvas(false);
+
+var prevDistance = 0;
+
+$("#canvas").ontouchmove(function(e) {
+    if (e.touches.length === 2) {
+        var touch1 = e.touches[0];
+        var touch2 = e.touches[1];
+        var x1 = touch1.pageX;
+        var y1 = touch1.pageY;
+        var x2 = touch2.pageX;
+        var y2 = touch2.pageY;
+        var distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+        var prevScale = scale;
+        scale = prevScale * distance / prevDistance;
+        prevDistance = distance;
+        resizeCanvas(scale > prevScale);
     }
-  }, false);
+}
+});
