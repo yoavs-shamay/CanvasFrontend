@@ -42,6 +42,7 @@
     transform: translate(-50%, -50%);
     border-radius: 20px;
     padding: 30px;
-    background-color: rgb(229, 229, 229);
+    background-color: rgb(235, 235, 235);
     border: 2px solid black;
+    width: 50%;
 }
