@@ -1,3 +1,13 @@
+body
+{
+    background-color: black;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+}
+
 .title
 {
     font-family: "Rubik", sans-serif;
@@ -42,7 +52,7 @@
     transform: translate(-50%, -50%);
     border-radius: 20px;
     padding: 30px;
-    background-color: rgb(235, 235, 235);
+    background-color: rgb(245, 245, 245);
     border: 2px solid black;
     width: 50%;
 }
