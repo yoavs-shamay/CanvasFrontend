@@ -174,11 +174,13 @@ function canvasClick(e)
 {
     var pixel = canvasObject.Pixels[x][y];
     $("#pixel-info").show();
+    $("#change-pixel").show();
     var canvasx = e.offsetX;
     var canvasy = e.offsetY;
     if (canvasx < 0 || canvasy < 0 || canvasx > $("#canvas").width() || canvasy > $("#canvas").height())
     {
         $("#pixel-info").hide();
+        $("#change-pixel").hide();
         return;
     }
     x = Math.floor(canvasx / scaleRound);
