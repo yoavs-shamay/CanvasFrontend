@@ -192,6 +192,14 @@ function canvasClick(e)
     $("#pixel-color").prop("disabled", true);
     $("#pixel-coords").text("(" + x + "," + y + ")");
     $("#pixel-modifier").text(pixel.LastModifier);
+    if (pixel.LastModifier === "")
+    {
+        $("#modifier-info").hide();
+    }
+    else
+    {
+        $("#modifier-info").show();
+    }
     if (remainingTime > 0)
     {
         $("#timer").show();
