@@ -4,6 +4,8 @@ body
     background-image: url("../Images/login-background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .title
