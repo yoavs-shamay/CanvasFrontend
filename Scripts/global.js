@@ -1,7 +1,7 @@
 function backendHttpRequest(path, params, callback)
 {
     var sessionId = localStorage.getItem("sessionId");
-    var url = "https://canvas-backend-bengurion.herokuapp.com/Canvas/" + path;
+    var url = "https://canvas-backend.azurewebsites.net/Canvas/" + path;
     $.ajax({
         url: url,
         type: "GET",
