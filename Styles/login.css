@@ -9,6 +9,9 @@ body
     font-size: 30px;
     text-align: center;
     margin-top: 10px;
+    background-image: url("../Images/login-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .g-signin2
