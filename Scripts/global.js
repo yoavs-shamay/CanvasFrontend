@@ -1,4 +1,4 @@
-var backendUrl = "localhost:44347";
+var backendUrl = "canvas-backend-bengurion.herokuapp.com";
 
 function backendHttpRequest(path, params, callback)
 {
