@@ -256,6 +256,7 @@ function saveColor()
     $("#change-color-button").hide();
     $("#timer").show();
     $("#timer").text("5:00");
+    remainingTime = 5;
     backendHttpRequest("ChangePixel", params, function() {
         remainingTime = 5;
         loadCanvas();
