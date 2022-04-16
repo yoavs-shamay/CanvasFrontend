@@ -7,7 +7,11 @@ body
     -o-user-select: none;
     margin: 0;
     overscroll-behavior-y: contain;
-    background-color:lightgray;
+    background-image: url("../Images/login-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 }
 
 .canvasDiv
