@@ -8,11 +8,14 @@
         <script src="../Scripts/global.js"></script>
         <script src="../Scripts/login.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,400&family=Rubik&display=swap" rel="stylesheet">
     </head>
     <body>
-        <h1>Login</h1>
+        <h1 class="title">התחברות</h1>
         <div class="g-signin2" data-onsuccess="onSignIn"></div>
-        <p class="login-note">You have to login using the organization email</p>
-        <p style="display: none;" class="failed-message" id="failed-message">Login failed</p>
+        <p class="login-note">צריך להתחבר באמצעות המייל הארגוני</p>
+        <p style="display: none;" class="failed-message" id="failed-message">ההתחברות נכשלה, נסה שוב</p>
     </body>
 </html>
