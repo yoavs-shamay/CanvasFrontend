@@ -1,7 +1,8 @@
+var backendUrl = "localhost:44347";
+
 function backendHttpRequest(path, params, callback)
 {
-    var sessionId = localStorage.getItem("sessionId");
-    var url = "https://canvas-backend.azurewebsites.net/Canvas/" + path;
+    var url = "https://" + backendUrl + "/Canvas/" + path;
     $.ajax({
         url: url,
         type: "GET",
