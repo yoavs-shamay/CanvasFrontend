@@ -33,14 +33,6 @@ $(function() {
                 downY = y;
                 mouseDown = true;
             }
-            //else
-            //{
-            //    var x = event.originalEvent.touches[0].pageX;
-            //    var y = event.originalEvent.touches[0].pageY;
-            //    var x2 = event.originalEvent.touches[1].pageX;
-            //    var y2 = event.originalEvent.touches[1].pageY;
-            //    prevDistance = Math.sqrt((x2 - x) * (x2 - x) + (y2 - y) * (y2 - y));
-            //}
             prevDistance = 0;
         });
         
@@ -81,6 +73,8 @@ $(function() {
     }
 });
 
+const zeroPad = (num, places) => String(num).padStart(places, '0');
+
 function reduceRemainingTime()
 {
     if (remainingTime > 0)
@@ -88,7 +82,7 @@ function reduceRemainingTime()
         remainingTime -= 1/60;
         var minutes = Math.floor(remainingTime);
         var seconds = Math.floor((remainingTime - minutes) * 60);
-        $("#timer").text(minutes + ":" + seconds);
+        $("#timer").text(minutes + ":" + zeroPad(seconds, 2));
     }
     updateTimerAndButton();
 }
