@@ -8,7 +8,7 @@
 
 .g-signin2
 {
-    margin-top: 70px;
+    margin-top: 150px;
     width: 100%;
 }
 
@@ -22,7 +22,7 @@
     font-family: "Rubik", sans-serif;
     font-size: 20px;
     text-align: center;
-    margin-top: 70px;
+    margin-top: 150px;
 }
 
 .failed-message
