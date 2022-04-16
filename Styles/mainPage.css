@@ -58,3 +58,10 @@ body
     left: 50%;
     transform: translateX(-50%);
 }
+
+.button
+{
+    border-radius: 12px;
+    border: 1px solid black;
+    padding: 5px;
+}
