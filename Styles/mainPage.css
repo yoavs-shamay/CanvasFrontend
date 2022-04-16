@@ -56,7 +56,7 @@ body
     font-family: "Rubik", sans-serif;
 }
 
-.last-modifier
+.pixel-modifier
 {
     font-family: "Rubik", sans-serif;
 }
@@ -65,8 +65,10 @@ body
 {
     position: absolute;
     bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .button
