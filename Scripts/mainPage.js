@@ -305,11 +305,11 @@ function canvasTouchMove(e)
         var distance = Math.sqrt((x2 - x) * (x2 - x) + (y2 - y) * (y2 - y));
         if (distance > prevDistance)
         {
-            resizeCanvas(true, 0.2);
+            resizeCanvas(true, 0.4);
         }
         else if (distance < prevDistance)
         {
-            resizeCanvas(false, 0.2);
+            resizeCanvas(false, 0.4);
         }
         prevDistance = distance;
     }
