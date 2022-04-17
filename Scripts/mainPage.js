@@ -9,7 +9,7 @@ $(function() {
     }
 
     backendHttpRequest("CheckSessionId", {"sessionId": sessionId}, function(response, status) {
-        if (response === "false")
+        if (response === "False")
         {
             localStorage.removeItem("sessionId");
             window.location.href = "login.html";
