@@ -31,55 +31,9 @@ $(function() {
             }
             if (isMobile)
             {
-                $("#canvasDiv").on("touchstart", function(event) {
-                    console.log("touchstart");
-                    if (event.touches.length == 1) {
-                        var touch = event.originalEvent.touches[0];
-                        var r = canvas.getBoundingClientRect();
-                        var touch = event.touches[0];
-                        var x = touch.pageX - r.left;
-                        var y = touch.pageY - r.top;
-                        downX = x;
-                        downY = y;
-                        mouseDown = true;
-                    }
-                    prevDistance = 0;
-                });
-                
-                
-                $("#canvasDiv").on("touchmove", function(e) {
-                    if (e.touches.length === 2) {
-                        console.log("touchmove with 2");
-                        var x = e.originalEvent.touches[0].pageX;
-                        var y = e.originalEvent.touches[0].pageY;
-                        var x2 = e.originalEvent.touches[1].pageX;
-                        var y2 = e.originalEvent.touches[1].pageY;
-                        var distance = Math.sqrt((x2 - x) * (x2 - x) + (y2 - y) * (y2 - y));
-                        if (distance > prevDistance)
-                        {
-                            resizeCanvas(true, 0.2);
-                        }
-                        else if (distance < prevDistance)
-                        {
-                            resizeCanvas(false, 0.2);
-                        }
-                        prevDistance = distance;
-                    }
-                    else if (e.touches.length === 1) {
-                        console.log("touchmove with 1");
-                        var r = canvas.getBoundingClientRect();
-                        var touch = e.touches[0];
-                        var x = touch.pageX - r.left;
-                        var y = touch.pageY - r.top;
-                        canvasMouseMove({offsetX: x, offsetY: y});
-                    }
-                });
-                
-                $("#canvasDiv").on("touchend", function(e) {
-                    console.log("touchend");
-                    mouseDown = false;
-                    prevDistance = 0;
-                });
+                $("#canvas").on("touchstart", canvasTouchStart);
+                $("#canvas").on("touchmove", canvasTouchMove);
+                $("#canvas").on("touchend", canvasTouchEnd);
             }
         }
     });
@@ -324,4 +278,52 @@ function canvasMouseMove(event)
         $("#canvas").css("left", currentTransformX + "px");
         $("#canvas").css("top", currentTransformY + "px");
     }
+}
+
+function canvasTouchStart(event)
+{
+    if (event.touches.length == 1) {
+        var touch = event.originalEvent.touches[0];
+        var r = canvas.getBoundingClientRect();
+        var touch = event.touches[0];
+        var x = touch.pageX - r.left;
+        var y = touch.pageY - r.top;
+        downX = x;
+        downY = y;
+        mouseDown = true;
+    }
+    prevDistance = 0;
+}
+
+function canvasTouchMove(e)
+{
+    if (e.touches.length === 2) {
+        var x = e.originalEvent.touches[0].pageX;
+        var y = e.originalEvent.touches[0].pageY;
+        var x2 = e.originalEvent.touches[1].pageX;
+        var y2 = e.originalEvent.touches[1].pageY;
+        var distance = Math.sqrt((x2 - x) * (x2 - x) + (y2 - y) * (y2 - y));
+        if (distance > prevDistance)
+        {
+            resizeCanvas(true, 0.2);
+        }
+        else if (distance < prevDistance)
+        {
+            resizeCanvas(false, 0.2);
+        }
+        prevDistance = distance;
+    }
+    else if (e.touches.length === 1) {
+        var r = canvas.getBoundingClientRect();
+        var touch = e.touches[0];
+        var x = touch.pageX - r.left;
+        var y = touch.pageY - r.top;
+        canvasMouseMove({offsetX: x, offsetY: y});
+    }
+}
+
+function canvasTouchEnd(e)
+{
+    mouseDown = false;
+    prevDistance = 0;
 }
